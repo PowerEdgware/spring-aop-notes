@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 被代理的业务bean -->
+	<bean id="businessService"
+		class="com.study.service.BusinessService" />
+
+	<!-- aop 配置 -->
+
+	<!-- 切面类 -->
+	<bean id="concurrentOperator"
+		class="com.study.schemaaop.ConcurrentOperationExecutorAspect">
+		<property name="order" value="100" />
+		<property name="maxRetries" value="3" />
+	</bean>
+
+	<aop:config>
+		<!-- 切面引用 -->
+		<aop:aspect ref="concurrentOperator">
+			<!-- 切点、切点表达式定义。拦截所有service公共方法且方法带有 Idempotent注解-->
+			<aop:pointcut
+				expression="execution(* com.study.service.*.*(..)) and @annotation(com.study.annotation.Idempotent)"
+				id="businessServicePointcut" />
+
+			<!-- 定义环绕通知 -->
+			<aop:around method="doConcurrentOperation"
+				pointcut-ref="businessServicePointcut" />
+				
+		</aop:aspect>
+
+
+	</aop:config>
+
+
+
+</beans>       

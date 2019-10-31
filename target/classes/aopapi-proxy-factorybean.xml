@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!-- 	<bean id="personTarget" class="com.study.aopapi.PersonImpl"> -->
+<!-- 		<property name="name" value="Tony" /> -->
+<!-- 		<property name="age" value="51" /> -->
+<!-- 	</bean> -->
+
+	<!-- Advisor and Interceptor used to provide advice -->
+	<bean id="debugInterceptor"
+		class="org.springframework.aop.interceptor.DebugInterceptor">
+	</bean>
+
+	<bean id="myAdvisor" class="com.study.aopapi.MyAdvisor" />
+
+	<bean id="person"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces"
+			value="com.study.aopapi.Person" />
+		<!-- <property name="target" ref="personTarget" /> -->
+		<property name="target">
+			<!-- Use inner bean, not local reference to target -->
+			<!-- 不对外暴露 PersonImpl -->
+			<bean class="com.study.aopapi.PersonImpl">
+				<property name="name" value="Tony" />
+				<property name="age" value="51" />
+			</bean>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>myAdvisor</value>
+				<value>debugInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 持有person代理的Bean -->
+	<bean id="personUser" class="com.study.aopapi.PersonUser">
+		<property name="person">
+			<ref bean="person" />
+		</property>
+	</bean>
+</beans>
