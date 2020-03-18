@@ -1,9 +1,12 @@
 package com.study;
 
+import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
+
 public class AopReadme {
 
 	void readme() {
-		//AopNamespaceHandler
+		//AopNamespaceHandler AnnotationAwareAspectJAutoProxyCreator
 		//Aspect
 		//JoinPoint
 		//Pointcut
@@ -46,6 +49,9 @@ public class AopReadme {
 		//Errors BindingResult
 		//BeanWrapper PropertyEditor
 		//BeanWrapperImpl
-		//
+		//BeanFactoryPostProcessor
+//		TransactionInterceptor
+		//SocketTimeoutException 
+		//SocketException
 	}
 }
