@@ -18,14 +18,14 @@ public class PerformXAgent {
 	//Each premain method must return in order for the startup sequence to proceed.
 
 	public static void premain(String agentArgs, Instrumentation inst) {
-		System.out.println("PerformXAgent preMain was Called" + PerformXAgent.class.getClassLoader());
+		System.out.println("PerformXAgent preMain was Called " + PerformXAgent.class.getClassLoader());
 
 		instrumentation = inst;
 
 		PerformanceXTransformer transformer = new PerformanceXTransformer();
 		System.out.println("Add a transformer to JVM." + transformer);
 		
-		instrumentation.addTransformer(transformer, true);
+		instrumentation.addTransformer(transformer, false);
 
 	}
 
@@ -39,8 +39,8 @@ public class PerformXAgent {
 		instrumentation = inst;
 
 		PerformanceXTransformer transformer = new PerformanceXTransformer();
-		System.out.println("Add a transformer to JVM Via agentmain" + transformer);
+		System.out.println("Add a transformer to JVM Via agentmain " + transformer);
 		
-		instrumentation.addTransformer(transformer, true);
+		instrumentation.addTransformer(transformer, false);
 	}
 }
