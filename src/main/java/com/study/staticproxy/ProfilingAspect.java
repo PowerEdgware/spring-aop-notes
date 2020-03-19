@@ -22,6 +22,7 @@ public class ProfilingAspect {
         }
     }
     //com.study..service.*.*(..)
+    //execution(* com.study..service.*.*(..))
     @Pointcut("execution(* com.study..service.*.*(..))")
     public void methodsToBeProfiled(){}
 }

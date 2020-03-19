@@ -53,5 +53,8 @@ public class AopReadme {
 //		TransactionInterceptor
 		//SocketTimeoutException 
 		//SocketException
+		
+		
+		//TODO StaticMethodMatcherPointcut
 	}
 }

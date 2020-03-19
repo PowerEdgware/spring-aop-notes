@@ -19,6 +19,10 @@ public class StaticProxyViaAspectJ {
 		//spring-aspect.jar
 		
 		//AnnotationBeanConfigurerAspect
+		//AnnotationTransactionAspect
+		//AnnotationAsyncExecutionAspect
+		
 		//EnableLoadTimeWeaving
+		//InstrumentationSavingAgent
 	}
 }

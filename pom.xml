@@ -7,8 +7,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<spring-version>5.0.10.RELEASE</spring-version>
-		<aspectj-version>1.9.2</aspectj-version>
+<!-- 		<spring-version>5.0.10.RELEASE</spring-version> -->
+		<spring-version>5.2.4.RELEASE</spring-version>
+		<aspectj-version>1.9.5</aspectj-version>
 	</properties>
 	<dependencies>
 
@@ -30,12 +31,26 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>${aspectj-version}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj-version}</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-instrument</artifactId>
 			<version>${spring-version}</version>
 		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-aspects</artifactId> -->
+<!-- 			<version>${spring-version}</version> -->
+<!-- 		</dependency> -->
+
 
 	</dependencies>
 </project>
