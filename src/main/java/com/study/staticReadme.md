@@ -206,6 +206,12 @@ spring-instrument.jar
 
 3.Spring Configuration 方式  上面实现为：XML-based configuration方式   
 
+注意： spring annotation方式的LoadTimeWeaver有bug，不能实现类的增强，因为在利用springboot autoconfiguration[`LoadTimeWeavingConfiguration`] 把`DefaultContextLoadTimeWeaver`加入
+`ClassFileTransformer`之前，很多业务类都已经被appClassLoader加载过了，从而导致`ClassFileTransformer`失效。
+导致Aspectj类增强失效。  
+
+
+
 ```
 @Configuration
 @EnableLoadTimeWeaving
