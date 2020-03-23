@@ -8,6 +8,7 @@ public class StaticProxyViaAspectJ {
 		//LoadTimeWeaverBeanDefinitionParser
 		//AspectJWeavingEnabler
 		//DefaultContextLoadTimeWeaver
+		//delegate InstrumentationLoadTimeWeaver-> JVM started with Spring InstrumentationSavingAgent (java -javaagent:path/to/spring-instrument.jar)
 		//AbstractApplicationContext#refresh##prepareBeanFactory
 		//LoadTimeWeaverAwareProcessor
 		
@@ -24,5 +25,7 @@ public class StaticProxyViaAspectJ {
 		
 		//EnableLoadTimeWeaving
 		//InstrumentationSavingAgent
+		
+		//Aj
 	}
 }

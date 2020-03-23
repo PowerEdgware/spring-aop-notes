@@ -12,10 +12,13 @@ public class ProfilingAspect {
 
     @Around("methodsToBeProfiled()")
     public Object profile(ProceedingJoinPoint pjp) throws Throwable {
+    	System.out.println("before!");
         StopWatch sw = new StopWatch(getClass().getSimpleName());
         try {
             sw.start(pjp.getSignature().getName());
-            return pjp.proceed();
+            Object ret= pjp.proceed();
+            System.out.println("after! "+ret);
+            return ret;
         } finally {
             sw.stop();
             System.out.println(sw.prettyPrint());
@@ -23,6 +26,6 @@ public class ProfilingAspect {
     }
     //com.study..service.*.*(..)
     //execution(* com.study..service.*.*(..))
-    @Pointcut("execution(* com.study..service.*.*(..))")
+    @Pointcut("execution(* com.study.service.*.*(..))")
     public void methodsToBeProfiled(){}
 }

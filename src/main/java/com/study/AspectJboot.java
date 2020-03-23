@@ -15,9 +15,9 @@ public class AspectJboot {
 		
 		BusinessService businessService=context.getBean(BusinessService.class);
 		
-		String resp=businessService.doSomething("hello");
-//		String resp=businessService.doSomethingWithAnno("hello");
-		System.out.println("resp="+resp);
+//		String resp=businessService.doSomething("hello");
+		String resp=businessService.doSomethingWithAnno("hello");
+		System.out.println("resp="+resp+" proxy="+businessService.getClass());
 		
 		context.close();
 	}

@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean class="com.study.staticproxy.ProfilingAspect"/>
+<!-- 	<bean class="com.study.staticproxy.ProfilingAspect"/> -->
 
 	<!-- a service object; we will be profiling its methods -->
 	<!-- bean definitions here -->
