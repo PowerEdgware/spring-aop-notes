@@ -20,12 +20,6 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>${aspectj-version}</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-instrument</artifactId>
-			<version>${spring-version}</version>
-		</dependency>
 ```
 
 
